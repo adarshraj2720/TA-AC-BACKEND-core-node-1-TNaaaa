@@ -1,14 +1,25 @@
 
 
-1.
+//1.
 var fs = require('fs')
 fs.readFile('./index.md',(error,content)=>{
     console.log(content.toString())
 })
 
+//refator
+var{readFile,readFileSync} = require('fs');
+readFile('./index.md','utf8',(err,content)=>{
+    console.log(content)
+})
+
 //2.Sync
 console.log('Welcome to Altcampus')
 console.log('Welcome in dharmshala')
+
+
+//refactor
+var result= readFileSync('./index.ms','utf8')
+console.log(result)
 
 
 //3.Async
