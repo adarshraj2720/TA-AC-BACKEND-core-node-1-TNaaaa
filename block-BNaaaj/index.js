@@ -14,6 +14,17 @@ readFile('./index.md','utf8',(err,content)=>{
     console.log(content)
 })
 
+//refactor
+var{readFile,readFileSync,unlink,fstat}=
+require('fs')
+
+//blocking and non-blocking
+var sync=readFileSync('./app.js');
+readFile('./app.js' ,(err,content)=>{
+    console.log(err,content.toString())
+})
+
+
 
 
 let buff1= Buffer.alloc(12)
@@ -27,7 +38,7 @@ console.log(buff2.toString())
 var url = require("url");
 const parsedUrl = url.parse(
   "https://airindia.com/fares/calculate?from=delhi&to=detroi"
-
+    ,true
 );
 
 console.log(parsedUrl.query)
