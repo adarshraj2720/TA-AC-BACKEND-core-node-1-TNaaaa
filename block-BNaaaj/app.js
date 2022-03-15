@@ -1,0 +1,5 @@
+var area=require("./area")
+console.log(area)
+console.log(area.square(12))
+console.log(area.rectangle(5,9))
+console.log(area.circle(7))
