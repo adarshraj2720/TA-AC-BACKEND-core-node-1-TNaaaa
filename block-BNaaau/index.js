@@ -1,26 +1,28 @@
 var http = require('http')
-var server = http.createServer(handleRequest)
 var fs = require('fs')
+var url = require('url')
+var server = http.createServer(handleRequest)
+
 
 //1
 function handleRequest (req,res){
-    if(req.method==="POST"){
-
-    }
+    console.log(req,res )
 }
 server.listen(5000)
 
 
 //2
-// function handleRequest(req,res){
-//      res.end()
-// }
-// server.listen(5100)
+function handleRequest(req,res){
+     res.end('MY first server in NOdejs')
+}
+server.listen(5100)
 //3
 function handleRequest(req,res){
     console.log(req.headers)
+    res.end(req.headers['user-agent'])
     
 }
+server.listen(5100)
 
 
 //4
@@ -28,7 +30,7 @@ function handleRequest(req,res){
 //     // console.log(req.method,req.url)
 //     res.setHeader('Content-Type','text/plain')
 //     console.log(req.method,req.url)
-//     res.end()
+//     res.end(req.method+req.url)
 // }
 // server.listen(5566)
 
@@ -36,7 +38,7 @@ function handleRequest(req,res){
 //5
 // function handleRequest(req,res){
 //     console.log(req.headers)
-//     res.end()
+//     res.end(JSON.stringify(req.headers))
 // }
 // server.listen(7000,()=>{
 //     console.log(`Server  listening on port 7000`)
@@ -45,7 +47,7 @@ function handleRequest(req,res){
 //6
 // function handleRequest(req,res){
 //     res.statusCode=202
-//     res.end()
+//    res.end(JSON.stringify(req.headers))
 // }
 // server.listen(3333)
 
@@ -66,13 +68,13 @@ function handleRequest(req,res){
 //9
 // function handleRequest(req,res){
 //     res.setHeader('Content-Type','application/json')
-//     res.end(`{success: true, message: 'Welcome to Nodejs'}`)
+//     res.end(JSON.stringify({success: true, message: 'Welcome to Nodejs'}))
 // }
 // server.listen(8888)
 
 //10
 // function handleRequest(req,res){
-//     req.method==="POST" && req.url==="/index"
+//    
 //     console.log(req.method)
 //     res.setHeader('Content-Type','text/html')
 //     res.end('<h2>Posted for first time</h2')
@@ -110,7 +112,9 @@ function handleRequest(req,res){
 
 //13
 function handleRequest(req,res){
-    if(req.url==='/users?email=nodeserver@gmail.com'){
-
-    }
+    var parsedUrl = url.parse(req.url, true);
+    console.log(parsedUrl.pathname,req.url)
+    res.setHeader('Content-Type','application/json')
+    res.end(JSON.stringify(parsedUrl.query))
 }
+server.listen
