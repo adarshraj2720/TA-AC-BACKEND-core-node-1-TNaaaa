@@ -6,16 +6,17 @@ function handleRequest(req,res){
     console.log(req.method,req.url)
 
     if(req.method==='GET' && req.url==='/'){
-        res.writeHead(200,{'Content-Type':'plain/text'})
+        // res.writeHead(200,{'Content-type':'text/plain'})
+        res.setHeader('content','text/plain')
         res.end('Welcome to homepage')
     }
     else if(req.method==='GET' && req.url==='/about'){
-        res.writeHead(200,{'Content-Type':'plain/html'})
+        res.writeHead(200,{'Content-type':'text/html'})
         res.end('<h2>This is all about NodeJs</h2>')
     }
     else if(req.method==='POST' && req.url==='/about'){
-        res.writeHead(200,{'Content-Type':'plain/json'})
-        res.end(JSON.stringify(`{message: this is a post request}`))
+        res.writeHead(200,{'Content-type':'application/json'})
+        res.end(`{message: this is a post request}`)
     }
 }
 
