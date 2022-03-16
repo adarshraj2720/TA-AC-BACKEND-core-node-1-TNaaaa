@@ -8,7 +8,7 @@ function handleRequest(req,res){
     if(req.method==="GET" && req.url==="/"){
         fs.readFile('./index.html',(err,content)=>{
             res.setHeader('Content-Type','text/html')
-            if(err) console.log(err)
+            if(err)console.log(err)
             res.end(content)
         })    
     }
